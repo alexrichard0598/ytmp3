@@ -4,7 +4,7 @@ SetLocal DisableDelayedExpansion
 if "%~dp0"=="" (
 	SET current_path=%cd%
 ) else (
-	\tSET "current_path=%~dp0"
+	SET "current_path=%~dp0"
 )
 IF %current_path:~-1%==\ SET current_path=%current_path:~0,-1%
 
@@ -31,13 +31,13 @@ IF NOT EXIST "%current_path%\bin\ffmpeg.exe" (
 	)
 	ECHO Extracting FFmpeg
 	mkdir tmp
-	tar -xf "%current_path%\ffmpeg.zip" -C "%current_path%\tmp"
+	tar -xf "%current_path%\ffmpeg.zip" -C "%current_path%mp"
 
-	FOR /d %%D IN ("%current_path%\tmp\*") DO (
+	FOR /d %%D IN ("%current_path%mp\*") DO (
     IF EXIST "%%D\bin" (
       ECHO Moving FFmpeg to bin
       MOVE /y "%%D\bin\*" "bin\"
-      RD /s /q "%current_path%\tmp"
+      RD /s /q "%current_path%mp"
     )
 	)
 )
