@@ -8,8 +8,8 @@ if "%~dp0"=="" (
 )
 IF %current_path:~-1%==\ SET current_path=%current_path:~0,-1%
 
-ECHO Checking git version
-git --version || ECHO Installing git; winget install --id Git.Git -e --source winget
+ECHO Checking for git
+git --version || winget install --id Git.Git -e --source winget
 
 ECHO Checking for updates to script
 git status || git init; git remote add origin https://github.com/alexrichard0598/ytmp3.git
