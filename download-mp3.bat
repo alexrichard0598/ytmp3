@@ -12,7 +12,7 @@ ECHO Checking for git
 git --version || winget install --id Git.Git -e --source winget
 
 ECHO Checking for updates to script
-git status || git init; git remote add origin https://github.com/alexrichard0598/ytmp3.git
+git status || git init && git remote add origin https://github.com/alexrichard0598/ytmp3.git
 git pull --set-upstream origin master
 
 IF NOT EXIST "%current_path%\bin" (
@@ -43,7 +43,7 @@ IF NOT EXIST "%current_path%\bin\ffmpeg.exe" (
 )
 
 ECHO Checking Deno version
-deno -v || winget install DenoLand.Deno; ECHO Please rerun script.; EXIT
+deno -v || winget install DenoLand.Deno && EXIT
 
 ECHO Checking for updates for yt-dlp
 CALL "%current_path%\bin\yt-dlp.exe" -U
