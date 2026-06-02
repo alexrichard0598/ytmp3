@@ -1,4 +1,4 @@
-Run this command to download the latest version of this script.
+Run this command in a directory of your choice to download the latest version of this script. DO NOT run this command in a non-empty folder, as it will download the files directly to the folder this is run from.
 
 Command Prompt
 ```cmd
