@@ -2,9 +2,9 @@
 SetLocal DisableDelayedExpansion
 
 if "%~dp0"=="" (
-    SET current_path=%cd%
+	SET current_path=%cd%
 ) else (
-    SET "current_path=%~dp0"
+	\tSET "current_path=%~dp0"
 )
 IF %current_path:~-1%==\ SET current_path=%current_path:~0,-1%
 
@@ -13,7 +13,7 @@ git --version || ECHO Installing git; winget install --id Git.Git -e --source wi
 
 ECHO Checking for updates to script
 git status || git init; git remote add origin https://github.com/alexrichard0598/ytmp3.git
-git pull --set-upstream origin master+
+git pull --set-upstream origin master
 
 IF NOT EXIST "%current_path%\bin" (
 	mkdir "%current_path%\bin"
@@ -35,12 +35,15 @@ IF NOT EXIST "%current_path%\bin\ffmpeg.exe" (
 
 	FOR /d %%D IN ("%current_path%\tmp\*") DO (
     IF EXIST "%%D\bin" (
-				ECHO Moving FFmpeg to bin
-        MOVE /y "%%D\bin\*" "bin\"
-        RD /s /q "%current_path%\tmp"
+      ECHO Moving FFmpeg to bin
+      MOVE /y "%%D\bin\*" "bin\"
+      RD /s /q "%current_path%\tmp"
     )
 	)
 )
+
+ECHO Checking Deno version
+deno -v || winget install DenoLand.Deno; ECHO Please rerun script.; EXIT
 
 ECHO Checking for updates for yt-dlp
 CALL "%current_path%\bin\yt-dlp.exe" -U
