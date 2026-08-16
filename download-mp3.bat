@@ -51,3 +51,5 @@ CALL "%current_path%\bin\yt-dlp.exe" -U
 SET /P url=[Please enter YouTube URL Ex: https://www.youtube.com/watch?v=kR8rk3K6qzo] &REM
 
 CALL "%current_path%\bin\yt-dlp.exe" --ffmpeg-location "%current_path%\bin" --paths "%current_path%\Downloads" "%url%"
+
+PAUSE
