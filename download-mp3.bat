@@ -13,7 +13,7 @@ git --version || winget install --id Git.Git -e --source winget
 
 ECHO Checking for updates to script
 git status || git init && git remote add origin https://github.com/alexrichard0598/ytmp3.git
-git pull --set-upstream origin master
+git pull --force --set-upstream origin master
 
 IF NOT EXIST "%current_path%\bin" (
 	mkdir "%current_path%\bin"
